@@ -1,18 +1,22 @@
 import Homepage from "@/components/homepage";
+import { ProductsApiResponse } from "@/types/api";
+import { Widget } from "@/types/widget";
+import axios from "axios";
+
+type ProductTypes = Array<{ title: string; category: string }>;
 
 export default async function Home() {
-  const productTypes = [
+  const productTypes: ProductTypes = [
     { title: "Smartphones", category: "smartphones" },
     { title: "Laptops", category: "laptops" },
   ];
 
-  const fetchProductWidgets = async () => {
+  const fetchProductWidgets = async (): Promise<Widget[]> => {
     const widgets = await Promise.all(
       productTypes.map(async ({ title, category }) => {
-        const res = await fetch(
+        const { data } = await axios.get<ProductsApiResponse>(
           `https://dummyjson.com/products/category/${category}?limit=5&skip=0`,
         );
-        const data = await res.json();
 
         return {
           title,
