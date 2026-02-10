@@ -13,7 +13,7 @@ import { A11y, Autoplay, Pagination } from "swiper/modules";
 
 import Widget from "@/components/homepage/widget";
 
-const Homepage = ({ widgetList }) => {
+const Homepage = ({ widgetList } ) => {
 
   return (
     <main className="mx-auto max-w-360 px-4">

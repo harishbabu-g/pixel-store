@@ -1,4 +1,5 @@
 import { calculateDiscountedAmount } from "@/utils/helper";
+import Rating from "./rating";
 
 const ProductCard = ({ product }) => {
   return (
@@ -19,8 +20,9 @@ const ProductCard = ({ product }) => {
 
       {/* Rating */}
       <div className="mt-1 flex items-center text-xs text-yellow-500">
-        ★★★★☆{" "}
-        <span className="ml-1 text-gray-500">({product?.reviews?.length})</span>
+        {/* ★★★★☆{" "} */}
+        <Rating rating={product?.rating} />
+        <span className="ml-1 text-gray-500">({product?.rating})</span>
       </div>
 
       {/* Price */}
